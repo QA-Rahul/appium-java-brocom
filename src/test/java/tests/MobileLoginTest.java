@@ -4,36 +4,36 @@ package tests;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import org.testng.annotations.AfterTest;
-import pages.LoginPage;
+import pages.MobileLoginPage;
 import utils.AppiumUtils;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import java.net.MalformedURLException;
 
 
-public class LoginTest {
+public class MobileLoginTest {
 
     private AppiumDriver<MobileElement> driver;
-    private LoginPage loginPage;
+    private MobileLoginPage mobileLoginPage;
 
     @BeforeClass
     public void beforeClass() throws MalformedURLException {
 
         driver = AppiumUtils.getAndroidDriver();
-        loginPage = new LoginPage(driver);
+        mobileLoginPage = new MobileLoginPage(driver);
 
     }
 
     @Test (priority = 1)
     public void testLogin() throws InterruptedException {
 
-        loginPage.login();
+        mobileLoginPage.login();
     }
     @Test (priority = 2)
     public void enterPIN() throws InterruptedException {
-        loginPage.enterPin();
+        mobileLoginPage.enterPin();
         Thread.sleep(5000);
-        loginPage.getStudentName();
+        mobileLoginPage.getStudentName();
     }
     @AfterTest
     public void afterClass (){

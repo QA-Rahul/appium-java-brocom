@@ -18,7 +18,7 @@ import org.testng.Assert;
 import java.util.List;
 
 
-public class LoginPage {
+public class MobileLoginPage {
 
     public AppiumDriver<MobileElement> driver;
 
@@ -45,7 +45,7 @@ public class LoginPage {
 
     public WebDriverWait wait;
 
-    public LoginPage(AppiumDriver<MobileElement> driver) {
+    public MobileLoginPage(AppiumDriver<MobileElement> driver) {
         this.driver = driver;
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
         wait = new WebDriverWait(driver, 40);
