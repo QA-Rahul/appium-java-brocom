@@ -1,0 +1,14 @@
+{
+  "automationName": "UiAutomator2",
+  "platformName": "Android",
+  "platformVersion": "12",
+  "deviceName": "RMX1825",
+  "udid": "PRY5AUOJONAAVO6T",
+  "appPackage": "com.bromcom.mcas",
+  "appActivity": "crc64738b383418757493.MainActivity",
+  "app": "${apkPath}",
+  "ignoreHiddenApiPolicyError": true,
+  "noReset": true,
+  "fullReset": false,
+  "hubUrl": "http://127.0.0.1:4723/wd/hub"
+}
