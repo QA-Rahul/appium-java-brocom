@@ -1,13 +1,13 @@
-package tests;
+package tests.mobile;
 
+import driverutils.AppiumUtils;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import pages.MobileLandingPage;
-import pages.MobileLoginPage;
-import driverutils.AppiumUtils;
+import pages.mobile.MobileLandingPage;
+import pages.mobile.MobileLoginPage;
 
 import java.io.FileNotFoundException;
 import java.net.MalformedURLException;
@@ -38,7 +38,7 @@ public class MobileWraparoundCareTest {
 
     }
     @AfterTest
-    public void quit (){
-        driver.quit();
+    public void quit(){
+        AppiumUtils.quitAppiumDriver();
     }
 }

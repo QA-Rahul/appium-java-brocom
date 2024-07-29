@@ -1,11 +1,14 @@
-package pages;
+package pages.web;
 
+import actions.WebElementAction;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import driverutils.WebElementAction;
+
+import java.io.FileNotFoundException;
+import java.util.List;
 
 public class WebClubPage {
     public WebDriver driver;
@@ -37,24 +40,30 @@ public class WebClubPage {
     @FindBy (id = "newgroup_CreateButton")
     WebElement btnSave;
 
+    @FindBy (xpath = "//div[@class='k-calendar-view']//tbody//td")
+    List<WebElement> dateCells;
+
+//    Check box Options
+//    @FindBy (xpath = "//div[@class='popover-content']//div[@class='checkbox']");
+//    List<WebElement> filterOptions;
 
     public WebClubPage(WebDriver driver) {
         this.driver = driver;
-        this.webElementAction = new WebElementAction();
+        webElementAction = new WebElementAction(driver);
         PageFactory.initElements(driver, this);
-        wait = new WebDriverWait(driver, 120);
-        this.webLandingPage = new WebLandingPage(driver);
+        webLandingPage = new WebLandingPage(driver);
     }
     public void goToGroup(){
+
         webLandingPage.webLandingGroups();
     }
-    public void createGroup() throws InterruptedException {
+    public void createGroup() throws InterruptedException, FileNotFoundException {
         webElementAction.selectDropdownByVisibleText(driver,groupType,"Clubs & Trips");
-        webElementAction.clickWebElement(driver,btn_New);
+        webElementAction.clickWebElement(btn_New);
         webElementAction.setTextAndTodayDate(driver,groupName);
         webElementAction.setTextAndTodayDate(driver,textarea_description);
-        webElementAction.calendarDateSelection(driver,iconCalendar,startDate,endDateIcon);
-        webElementAction.clickWebElement(driver,btnSave);
+        webElementAction.calendarDateSelection(driver,iconCalendar,startDate,endDateIcon,dateCells);
+        webElementAction.clickWebElement(btnSave);
     }
 
 }
