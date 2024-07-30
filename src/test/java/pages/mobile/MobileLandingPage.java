@@ -1,11 +1,11 @@
-package pages;
+package pages.mobile;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import driverutils.MobileElementAction;
+import actions.MobileElementAction;
 
 
 public class MobileLandingPage {
@@ -16,8 +16,6 @@ public class MobileLandingPage {
     public MobileLandingPage(AppiumDriver<MobileElement> driver) {
         this.driver = driver;
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
-        wait = new WebDriverWait(driver, 40);
-
     }
     MobileElement menuItem;
     public void clickOnMenu(String menuName){

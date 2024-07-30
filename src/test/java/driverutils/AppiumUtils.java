@@ -13,15 +13,17 @@ import java.io.FileReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import static actions.WaitElementAction.driver;
+
 public class AppiumUtils {
     public static AppiumDriver<MobileElement> getAndroidDriver() throws MalformedURLException, FileNotFoundException {
 
-        String jsonPath = System.getProperty("user.dir") +"/src/test/java/data/mobile/DesiredCapabilities.json";
-        FileReader reader = new FileReader(jsonPath);
+        String capabilities = "data/mobile/DesiredCapabilities.json";
+        FileReader reader = new FileReader(capabilities);
         JSONTokener tokener = new JSONTokener(reader);
         JSONObject jsonObject = new JSONObject(tokener);
 
-        String apkPath = System.getProperty("user.dir") + "/src/test/java/apk/com.bromcom.mcas 1.apk";
+        String apkPath = System.getProperty("user.dir") + "/apk/com.bromcom.mcas 1.apk";
         String appPath = jsonObject.getString("app").replace("${apkPath}", apkPath);
 
         DesiredCapabilities Dcp = new DesiredCapabilities();
@@ -31,7 +33,7 @@ public class AppiumUtils {
                     Dcp.setCapability(MobileCapabilityType.APP, appPath);
                     break;
                 case "hubUrl":
-                    continue; // Skip hubUrl as it's not a capability
+                    continue;
                 case "ignoreHiddenApiPolicyError":
                 case "noReset":
                 case "fullReset":
@@ -45,5 +47,12 @@ public class AppiumUtils {
 
         String hubUrl = jsonObject.getString("hubUrl");
         return new AndroidDriver<>(new URL(hubUrl), Dcp);
+    }
+
+    public static void quitAppiumDriver() {
+        if (driver != null) {
+            driver.quit();
+            driver = null;
+        }
     }
 }

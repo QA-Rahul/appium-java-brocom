@@ -1,12 +1,10 @@
-package pages;
+package pages.web;
 
+import actions.WebElementAction;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import driverutils.WebElementAction;
 
 
 public class WebLandingPage {
@@ -38,17 +36,15 @@ public class WebLandingPage {
     @FindBy (xpath = "//span[text()='Config']")
     WebElement Config;
 
-    public WebDriverWait wait;
 
     public WebLandingPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
-        wait = new WebDriverWait(driver, 120);
-        this.webElementAction = new WebElementAction();
+        this.webElementAction = new WebElementAction(driver);
     }
     public void clickOnWebMenu(WebDriver driver,WebElement element) {
-        wait.until(ExpectedConditions.elementToBeClickable(element));
-        webElementAction.clickWebElement(driver,element);
+
+        webElementAction.clickWebElement(element);
     }
 
     /* public void webLandingHome(){

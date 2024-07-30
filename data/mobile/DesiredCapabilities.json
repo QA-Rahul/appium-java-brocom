@@ -1,9 +1,9 @@
 {
   "automationName": "UiAutomator2",
   "platformName": "Android",
-  "platformVersion": "12",
-  "deviceName": "RMX1825",
-  "udid": "PRY5AUOJONAAVO6T",
+  "platformVersion": "14",
+  "deviceName": "SM A546E",
+  "udid": "RZCW31N918R",
   "appPackage": "com.bromcom.mcas",
   "appActivity": "crc64738b383418757493.MainActivity",
   "app": "${apkPath}",
